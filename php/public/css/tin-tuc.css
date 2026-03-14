@@ -381,29 +381,50 @@
     .news-page-title { font-size: 2.4rem; }
 
     .news-card {
-        grid-template-columns: 1fr;
-        gap: 12px;
-        padding: 20px 0;
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        padding: 20px;
+        background: var(--vc-white);
+        border-radius: 20px;
+        border-bottom: none;
+        box-shadow: 0 4px 16px rgba(0,0,0,0.04);
     }
 
     .news-card-date {
-        flex-direction: row;
-        gap: 8px;
-        justify-content: flex-start;
+        display: none; /* Hide large date block on mobile */
     }
-
-    .news-card-day-num { font-size: 1.8rem; }
-    .news-card-day-label { font-size: 0.8rem; }
 
     .news-card-thumb {
         width: 100%;
-        height: 200px;
+        height: auto;
+        aspect-ratio: 16 / 10;
+        border-radius: var(--vc-radius-sm);
+    }
+
+    .news-card-title {
+        font-size: 1.25rem;
     }
 
     .news-card-arrow {
-        position: absolute;
-        top: 20px;
-        right: 0;
+        position: static;
+        width: auto;
+        height: auto;
+        align-self: flex-start;
+        background: transparent;
+        color: var(--vc-accent);
+        font-size: 0.95rem;
+        font-weight: 500;
+        margin-top: 4px;
+        padding: 0;
+    }
+    
+    .news-card-arrow svg {
+        display: none;
+    }
+    
+    .news-card-arrow::after {
+        content: 'Đọc tiếp';
     }
 }
 
