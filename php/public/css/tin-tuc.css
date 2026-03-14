@@ -1,0 +1,419 @@
+/* ============================================================
+   VietCharm Tin Tức – CSS
+   File: public/css/tin-tuc.css
+   ============================================================ */
+
+/* ── Design Tokens (scoped to news page) ── */
+.news-page {
+    --vc-primary: #F9E3BB;
+    --vc-primary-dark: #E8C98A;
+    --vc-accent: #852629;
+    --vc-dark: #1C110F;
+    --vc-text-muted: #6B5C54;
+    --vc-border: rgba(0,0,0,0.1);
+    --vc-white: #FFFFFF;
+    --vc-radius-sm: 8px;
+    --vc-radius-md: 12px;
+    --vc-radius-pill: 99px;
+    --vc-transition: 0.25s cubic-bezier(.4,0,.2,1);
+}
+
+/* ── Page Wrapper ── */
+.news-page {
+    position: relative;
+    min-height: 100vh;
+    background: var(--vc-primary);
+    padding-top: 28px;
+    padding-bottom: 60px;
+}
+
+.news-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding-left: 40px;
+    padding-right: 40px;
+}
+
+/* ── Background Pattern ── */
+.news-bg-pattern {
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    z-index: 0;
+    pointer-events: none;
+    opacity: 0.06;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80'%3E%3Cpath d='M0 0h80v80H0z' fill='none'/%3E%3Cpath d='M40 0v80M0 40h80M20 0v80M60 0v80M0 20h80M0 60h80' stroke='%23852629' stroke-width='0.5' opacity='0.4'/%3E%3Ccircle cx='40' cy='40' r='15' fill='none' stroke='%23852629' stroke-width='0.5' opacity='0.3'/%3E%3Ccircle cx='40' cy='40' r='8' fill='none' stroke='%23852629' stroke-width='0.3' opacity='0.2'/%3E%3C/svg%3E");
+    background-size: 80px 80px;
+}
+
+/* ── Back Link ── */
+.news-back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--vc-accent);
+    font-family: 'MTD Valky', 'MTD-Valky', Georgia, serif;
+    font-size: 0.95rem;
+    font-weight: 400;
+    text-decoration: none;
+    position: relative;
+    z-index: 1;
+    transition: opacity var(--vc-transition);
+}
+
+.news-back-link:hover {
+    opacity: 0.7;
+    color: var(--vc-accent);
+    text-decoration: none;
+}
+
+/* ── Title Section ── */
+.news-title-section {
+    position: relative;
+    z-index: 1;
+    padding: 20px 40px 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.news-page-title {
+    font-family: 'MTD Valky', 'MTD-Valky', Georgia, serif;
+    font-size: 3.2rem;
+    font-weight: 700;
+    color: var(--vc-accent);
+    letter-spacing: 0.08em;
+    margin-bottom: 12px;
+    line-height: 1.2;
+}
+
+.news-page-subtitle {
+    font-size: 1rem;
+    color: var(--vc-text-muted);
+    margin-bottom: 28px;
+    font-weight: 400;
+}
+
+/* ── Search ── */
+.news-search-container {
+    display: flex;
+    justify-content: center;
+}
+
+.news-search-box {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: var(--vc-white);
+    border: 1px solid var(--vc-border);
+    border-radius: var(--vc-radius-pill);
+    padding: 12px 24px;
+    width: 100%;
+    max-width: 480px;
+    transition: box-shadow var(--vc-transition), border-color var(--vc-transition);
+}
+
+.news-search-box:focus-within {
+    border-color: var(--vc-accent);
+    box-shadow: 0 0 0 3px rgba(133, 38, 41, 0.1);
+}
+
+.news-search-icon {
+    color: var(--vc-text-muted);
+    flex-shrink: 0;
+}
+
+.news-search-input {
+    flex: 1;
+    border: none;
+    outline: none;
+    font-size: 0.95rem;
+    color: var(--vc-dark);
+    background: transparent;
+    font-family: inherit;
+}
+
+.news-search-input::placeholder {
+    color: #A89B93;
+}
+
+/* ============================================================
+   NEWS LIST SECTION
+   ============================================================ */
+.news-list-section {
+    position: relative;
+    z-index: 1;
+    padding-bottom: 60px;
+}
+
+/* ── Month Group ── */
+.news-month-group {
+    margin-bottom: 8px;
+}
+
+.news-month-badge {
+    margin-bottom: 24px;
+}
+
+.news-month-badge span {
+    display: inline-block;
+    background: var(--vc-accent);
+    color: var(--vc-primary);
+    font-family: 'MTD Valky', 'MTD-Valky', Georgia, serif;
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    padding: 8px 20px;
+    border-radius: var(--vc-radius-sm);
+}
+
+.news-month-divider {
+    border: none;
+    border-top: 1px solid rgba(133,38,41,0.15);
+    margin: 32px 0 40px;
+}
+
+/* ── News Card ── */
+.news-card {
+    display: grid;
+    grid-template-columns: 80px 180px 1fr 48px;
+    align-items: center;
+    gap: 24px;
+    padding: 24px 0;
+    border-bottom: 1px solid var(--vc-border);
+    transition: transform var(--vc-transition);
+    position: relative;
+}
+
+.news-card:last-child {
+    border-bottom: none;
+}
+
+.news-card:hover {
+    transform: translateX(4px);
+}
+
+/* Date column */
+.news-card-date {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+}
+
+.news-card-day-label {
+    font-size: 0.85rem;
+    color: var(--vc-text-muted);
+    text-transform: uppercase;
+    font-weight: 400;
+}
+
+.news-card-day-num {
+    font-family: 'MTD Valky', 'MTD-Valky', Georgia, serif;
+    font-size: 2.4rem;
+    font-weight: 700;
+    color: var(--vc-accent);
+    line-height: 1;
+}
+
+/* Thumbnail */
+.news-card-thumb {
+    width: 180px;
+    height: 120px;
+    border-radius: var(--vc-radius-md);
+    overflow: hidden;
+    flex-shrink: 0;
+}
+
+.news-card-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+}
+
+.news-card:hover .news-card-thumb img {
+    transform: scale(1.05);
+}
+
+/* Content */
+.news-card-content {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    min-width: 0;
+}
+
+.news-card-title {
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: var(--vc-dark);
+    line-height: 1.4;
+    transition: color var(--vc-transition);
+    margin-bottom: 0;
+}
+
+.news-card:hover .news-card-title {
+    color: var(--vc-accent);
+}
+
+.news-card-source {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.82rem;
+    color: var(--vc-accent);
+    font-weight: 400;
+}
+
+.news-card-source-icon {
+    font-size: 0.7rem;
+    opacity: 0.8;
+}
+
+.news-card-desc {
+    font-size: 0.88rem;
+    color: var(--vc-text-muted);
+    line-height: 1.5;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    margin-bottom: 0;
+}
+
+/* Tags */
+.news-card-tags {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-top: 4px;
+}
+
+.news-tag {
+    display: inline-block;
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    padding: 4px 12px;
+    border: 1px solid var(--vc-accent);
+    border-radius: var(--vc-radius-pill);
+    color: var(--vc-accent);
+    background: transparent;
+    transition: all var(--vc-transition);
+}
+
+.news-tag:hover {
+    background: var(--vc-accent);
+    color: var(--vc-primary);
+}
+
+/* Arrow link */
+.news-card-arrow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    color: var(--vc-text-muted);
+    transition: all var(--vc-transition);
+    border-radius: 50%;
+    text-decoration: none;
+}
+
+.news-card:hover .news-card-arrow {
+    color: var(--vc-accent);
+    background: rgba(133,38,41,0.08);
+}
+
+/* No results */
+.news-no-results {
+    text-align: center;
+    padding: 60px 20px;
+    color: var(--vc-text-muted);
+    font-size: 1rem;
+    display: none;
+}
+
+.news-no-results.visible {
+    display: block;
+}
+
+/* ============================================================
+   ANIMATIONS
+   ============================================================ */
+@keyframes vcFadeInUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+.news-month-group {
+    animation: vcFadeInUp 0.5s ease backwards;
+}
+
+.news-card-animate {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.news-card-animate.news-card-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width: 1024px) {
+    .news-card {
+        grid-template-columns: 60px 150px 1fr 40px;
+        gap: 16px;
+    }
+    .news-card-thumb { width: 150px; height: 100px; }
+}
+
+@media (max-width: 768px) {
+    .news-container {
+        padding-left: 16px;
+        padding-right: 16px;
+    }
+
+    .news-title-section {
+        padding-left: 16px;
+        padding-right: 16px;
+    }
+
+    .news-page-title { font-size: 2.4rem; }
+
+    .news-card {
+        grid-template-columns: 1fr;
+        gap: 12px;
+        padding: 20px 0;
+    }
+
+    .news-card-date {
+        flex-direction: row;
+        gap: 8px;
+        justify-content: flex-start;
+    }
+
+    .news-card-day-num { font-size: 1.8rem; }
+    .news-card-day-label { font-size: 0.8rem; }
+
+    .news-card-thumb {
+        width: 100%;
+        height: 200px;
+    }
+
+    .news-card-arrow {
+        position: absolute;
+        top: 20px;
+        right: 0;
+    }
+}
+
+@media (max-width: 480px) {
+    .news-page-title { font-size: 2rem; }
+    .news-search-box { padding: 10px 16px; }
+    .news-card-thumb { height: 160px; }
+}
