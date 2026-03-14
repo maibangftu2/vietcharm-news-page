@@ -648,7 +648,7 @@ button {
 @keyframes fadeInUp {
     from {
         opacity: 0;
-        transform: translateY(20px);
+        transform: translateY(16px);
     }
     to {
         opacity: 1;
@@ -656,33 +656,15 @@ button {
     }
 }
 
-.month-group {
-    animation: fadeInUp 0.5s ease backwards;
-}
-
-.month-group:nth-child(1) { animation-delay: 0.1s; }
-.month-group:nth-child(2) { animation-delay: 0.3s; }
-
 .news-card {
-    animation: fadeInUp 0.4s ease backwards;
+    animation: fadeInUp 0.4s ease both;
 }
 
-/* Stagger animations for cards */
-.month-group:nth-child(1) .news-card:nth-child(2) { animation-delay: 0.15s; }
-.month-group:nth-child(1) .news-card:nth-child(3) { animation-delay: 0.2s; }
-.month-group:nth-child(1) .news-card:nth-child(4) { animation-delay: 0.25s; }
-
-/* Card scroll animations */
-.card-animate {
-    opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 0.5s ease, transform 0.5s ease;
-}
-
-.card-animate.card-visible {
-    opacity: 1;
-    transform: translateY(0);
-}
+.news-card:nth-child(2) { animation-delay: 0.08s; }
+.news-card:nth-child(3) { animation-delay: 0.16s; }
+.news-card:nth-child(4) { animation-delay: 0.24s; }
+.news-card:nth-child(5) { animation-delay: 0.32s; }
+.news-card:nth-child(6) { animation-delay: 0.40s; }
 
 /* ============================================================
    RESPONSIVE

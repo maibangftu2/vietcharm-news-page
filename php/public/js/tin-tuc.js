@@ -68,25 +68,5 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         }
     }
-
-    // ── Intersection Observer for card animations ──
-    if ('IntersectionObserver' in window) {
-        var observer = new IntersectionObserver(function (entries) {
-            entries.forEach(function (entry) {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('news-card-visible');
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, {
-            threshold: 0.05,
-            rootMargin: '50px 0px 0px 0px'
-        });
-
-        newsCards.forEach(function (card, index) {
-            card.classList.add('news-card-animate');
-            card.style.transitionDelay = (index * 0.06) + 's';
-            observer.observe(card);
-        });
-    }
 });
+

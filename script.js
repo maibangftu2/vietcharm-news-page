@@ -97,25 +97,5 @@ document.addEventListener('DOMContentLoaded', () => {
 
         lastScroll = currentScroll;
     }, { passive: true });
-
-    // ── Intersection Observer for card animations ──
-    if ('IntersectionObserver' in window) {
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('card-visible');
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, {
-            threshold: 0.05,
-            rootMargin: '50px 0px 0px 0px'
-        });
-
-        newsCards.forEach((card, index) => {
-            card.classList.add('card-animate');
-            card.style.transitionDelay = `${index * 0.06}s`;
-            observer.observe(card);
-        });
-    }
 });
+
